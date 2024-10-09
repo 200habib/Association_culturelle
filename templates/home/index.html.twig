@@ -1,0 +1,164 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Acceuil
+{% endblock %}
+
+		{% block javascripts %}
+			{% block importmap %}
+				{{ importmap('app') }}
+			{% endblock %}
+		{% endblock %}
+		
+{% block body %}
+
+
+	<div class="example-wrapper">
+		<div class="relative mb-8">
+
+			<img src="{{ asset('img/homme/home.png') }}" alt="Image 1" class="w-full h-auto object-cover">
+
+
+			<div class="absolute inset-0 flex items-center justify-center pt-24 pb-4 sm:pt-32 sm:pb-8 md:pt-48 md:pb-12 lg:pt-56 lg:pb-16">
+				<div class="text-center max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl">
+					<h1 class="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl font-bold text-white">
+						Communauté Charismatique
+																Montagne des Miracles
+					</h1>
+					<p class="mt-2 text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-white">
+						Amour - Sainteté - Puissance - Équilibre
+					</p>
+				</div>
+			</div>
+		</div>
+
+
+		<section class="py-8 text-center bg-gray-100">
+			<h2 class="text-xl md:text-2xl lg:text-3xl font-bold mb-4">Une Église pour vous</h2>
+			<p class="text-base md:text-lg text-gray-600 max-w-3xl mx-auto px-4">
+				Venez écouter la parole de Dieu, venez la vivre avec nous!
+			</p>
+			<p class="text-base md:text-lg text-gray-600 max-w-3xl mx-auto px-4 mt-4">
+				L'invitation est pour tous, sans distinction d'âge, de statut social, d'origine culturelle ou de religion...
+			</p>
+		</section>
+
+
+		<div class="py-12 items-center">
+
+
+			<div class="flex-1">
+				<img src="{{ asset('img/homme/Capture.png') }}" alt="Service Image" class="w-full h-auto">
+
+			</div>
+
+
+		</div>
+
+
+		<section class="py-8 bg-white text-center">
+			<h3 class="text-xl md:text-2xl font-bold mb-6">Nos Valeurs</h3>
+			<div class="grid grid-cols-2 gap-6 md:grid-cols-4 max-w-4xl mx-auto px-4">
+				<div class="text-center">
+					<img class="block w-16 h-16 mx-auto mb-2" src="{{ asset('img/homme/amour.png') }}" alt="Amour">
+					<p class="text-base md:text-lg">Amour</p>
+				</div>
+				<div class="text-center">
+					<img class="block w-16 h-16 mx-auto mb-2" src="{{ asset('img/homme/saint.png') }}" alt="Sainteté">
+					<p class="text-base md:text-lg">Sainteté</p>
+				</div>
+				<div class="text-center">
+					<img class="block w-16 h-16 mx-auto mb-2" src="{{ asset('img/homme/puissan.png') }}" alt="Puissance">
+					<p class="text-base md:text-lg">Puissance</p>
+				</div>
+				<div class="text-center">
+					<img class="block w-16 h-16 mx-auto mb-2" src="{{ asset('img/homme/equilibre.png') }}" alt="Équilibre">
+					<p class="text-base md:text-lg">Équilibre</p>
+				</div>
+			</div>
+		</section>
+
+
+		<section class="py-8 bg-gray-100 text-center">
+			<h3 class="text-xl md:text-2xl font-bold mb-4">Une église, plusieurs extensions</h3>
+			<p class="text-sm md:text-base text-gray-600 max-w-3xl mx-auto px-4">
+				Nous voulons obéir et faire ce que Jésus nous a recommandé : "Allez et faites de toutes les nations des disciples" (Math. 28:19).
+			</p>
+			<p class="text-sm md:text-base text-gray-600 max-w-3xl mx-auto mt-3 px-4">
+				Aujourd'hui, ce sont 38 extensions de l'église La Compassion qui sont implantées à Kinshasa et dans les provinces de la RDC.
+			</p>
+		</section>
+
+
+		<section class="py-12 bg-white text-center">
+			<h3 class="text-2xl md:text-3xl font-bold mb-4">Faire un Don</h3>
+			<p class="text-base md:text-lg text-gray-600 max-w-3xl mx-auto px-4">
+				Les dons ponctuels sont une manière simple, concrète et sans engagement d'agir à nos côtés en faveur des personnes les plus démunies...
+			</p>
+			<button class="mt-6 bg-red-600 text-white py-2 px-6 rounded-full mx-auto hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50">
+				Faire un Don
+			</button>
+		</section>
+
+
+		<div class="bg-gray-100 py-8 px-4">
+			<div
+				class="flex flex-col md:flex-row items-center">
+				<!-- Image section -->
+				<div class="flex-1 w-full md:w-1/2 order-1 md:order-1">
+					<img src="{{ asset('img/homme/profilpst.jpeg') }}" alt="Service Image" class="rounded-md shadow-md w-full h-auto">
+				</div>
+
+				<!-- Text section -->
+				<div class="flex-1 w-full md:w-1/2 md:ml-8 mt-4 md:mt-0 order-2 md:order-2">
+					<h3 class="text-lg md:text-xl font-bold mb-4 text-center md:text-left">Pasteur Gael Yoshua</h3>
+					<p class="text-sm font-semibold text-gray-700 mb-4 text-center md:text-left">LEADER DE LA COMMUNAUTÉ C.M.M</p>
+
+					<p class="text-sm text-gray-600 text-justify md:text-left">
+						Gael Yoshua a donné sa vie à Jésus Christ en 2004 et a reçu l'appel au ministère en 2005. Il est marié à Mme Mira Hélène Basaula Yoshua. Deux enfants sont nés de leur union : Joélia et Gad.<br><br>
+						Il est le leader de la Communauté Charismatique Montagne des Miracles et Président de Gael Yoshua Ministries. Pasteur fondateur des Églises Montagne des Miracles, dont le siège principal se situe à Lyon, France (11 Avenue de la République, 69200, Vénissieux).<br><br>
+						Pasteur Gael se révèle être un véritable promoteur des jeunes, passionné de musique gospel. Il est aussi instrumentiste, pianiste et chanteur.<br><br>
+						Dans son ministère, il a consacré plusieurs pasteurs, évangélistes et diacres. De nombreux croyants ont été baptisés à travers son ministère, pour la gloire de Dieu.
+					</p>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="flex flex-col py-5 md:flex-row items-center justify-center">
+
+			<div class="flex-1 w-full max-w-xs md:max-w-3xl">
+				<div class="relative" style="padding-bottom: 56.25%; /* 16:9 ratio */ height: 0;">
+					<iframe class="absolute top-0 left-0 w-full h-full rounded-md shadow-md" src="https://www.youtube.com/embed/dpSvlwmCqho" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				</div>
+			</div>
+		</div>
+
+
+		<section class="py-8 bg-white text-center">
+			<h3 class="text-xl md:text-3xl font-bold mb-6">Nos Programmes des culte</h3>
+			<div class="grid grid-cols-2 gap-4 md:flex md:justify-center md:space-x-6 items-center">
+				<div class="text-center">
+					<img src="{{ asset('img/homme/Ellipse1.png') }}" alt="Programme 1" class="w-24 h-24 rounded-full mx-auto">
+					<p class="mt-2">Lundi : 14h00 - 18h00</p>
+				</div>
+
+				<div class="text-center">
+					<img src="{{ asset('img/homme/Ellipse2.png') }}" alt="Programme 2" class="w-24 h-24 rounded-full mx-auto">
+					<p class="mt-2">Vendredi : 14h - 18h00</p>
+				</div>
+
+				<div class="text-center">
+					<img src="{{ asset('img/homme/Ellipse3.png') }}" alt="Programme 3" class="w-24 h-24 rounded-full mx-auto">
+					<p class="mt-2">Samedi : 14h - 18h00</p>
+				</div>
+
+				<div class="text-center">
+					<img src="{{ asset('img/homme/Ellipse1.png') }}" alt="Programme 1" class="w-24 h-24 rounded-full mx-auto">
+					<p class="mt-2">Dimanche: Culte de 13h30 à 16h00</p>
+				</div>
+			</div>
+		</section>
+
+
+	{% endblock %}
+
