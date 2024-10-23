@@ -66,7 +66,7 @@
             '05': 'mai', '06': 'juin', '07': 'juillet', '08': 'août',
             '09': 'septembre', '10': 'octobre', '11': 'novembre', '12': 'décembre'
         } %}
-        
+
         <section class="agenda__listEvent">
             {% for agenda in agendas %}
                 <article class="agenda__listEvent_sub">
@@ -78,11 +78,21 @@
                         <h3>{{ agenda.title }}</h3>
                         <p>
                             <span class="{{ agenda.isOnline ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }} text-xs font-semibold px-2.5 py-0.5 rounded">
-                                {{ agenda.isOnline ? 'Yes' : 'No' }}
+                                {{ agenda.isOnline ? 'online' :  'Non' }}
                             </span>
                         </p>
+                        <div class="">
+                        <button class="toggleDescriptionButton text-blue-500" onclick="toggleDescription('desc-{{ agenda.id }}', this)">
+                            Voir la description
+                        </button>
+                        <p id="desc-{{ agenda.id }}" class="descriptionText" style="display: none;">
+                            {{ agenda.description }}
+                        </p>
+                        </div>
                         <div>
-                            <p>{{ agenda.startTime ? agenda.startTime|date('H:i') : '' }} - {{ agenda.endTime ? agenda.endTime|date('H:i') : '' }}</p>
+                            <p>{{ agenda.startTime ? agenda.startTime|date('H:i') : '' }}
+                                -
+                                {{ agenda.endTime ? agenda.endTime|date('H:i') : '' }}</p>
                             <p>{{ agenda.location }}</p>
                         </div>
                     </div>
@@ -92,4 +102,18 @@
             {% endfor %}
         </section>
     {% endif %}
+    <script>
+        function toggleDescription(descriptionId, button) {
+            const description = document.getElementById(descriptionId);
+
+            if (description.style.display === "none") {
+                description.style.display = "block";
+                button.textContent = "Masquer la description";
+            } else {
+                description.style.display = "none";
+                button.textContent = "Voir la description";
+            }
+        }
+    </script>
+
 {% endblock %}

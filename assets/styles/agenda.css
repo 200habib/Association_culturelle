@@ -1,0 +1,31 @@
+
+.agenda__listEvent {
+    margin: 20px;
+    border-radius: 7px;
+    border: 2px solid rgb(217, 217, 217);
+    border-left: solid rgb(247, 118, 110) 3px;
+}
+
+.agenda__listEvent_sub {
+    border-bottom: 2px solid rgb(217, 217, 217);
+    border-left: none;
+    padding: 10px;
+}
+
+.agenda__listEvent_sub {
+    display: flex;
+
+        
+}
+.agenda__listEvent_sub_date {
+    margin-right: 30px;
+}
+
+.descriptionText{
+    background-color: rgb(247, 118, 110);
+    padding: 6px;
+    font-size: small;
+    border-radius: 10px 10px 10px 10px;
+    width: auto;
+    
+}
