@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Agenda index{% endblock %}
+
+{% block body %}
+    <div class="relative">
+        <img src="{{ asset('img/agenda/agenda.png') }}" alt="Agenda Image" class="w-full h-[620px] object-cover">
+        <h1 class="absolute inset-0 flex items-center justify-center text-5xl font-semibold text-white general__h1">Agenda</h1>
+    </div>
+
+    {% if app.user and is_granted("ROLE_ADMIN") %}
+        <div class="general_marginTop container mx-auto my-8">
+            <div class="mb-4 text-right flex general__flex_end">
+                <a href="{{ path('app_agenda_new') }}" class="inline-block">
+                    <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center">
+                        Créer un nouvel événement
+                    </button>
+                </a>
+            </div>
+
+            <div class="overflow-x-auto border-r-4 border-red-500 pr-4">
+                <table class="min-w-full bg-white shadow-md rounded-lg overflow-hidden border-r-4 border-red-500">
+                    <thead class="bg-gray-800 text-black">
+                        <tr>
+                            <th class="py-3 px-4 text-left">Titre</th>
+                            <th class="py-3 px-4 text-left">Date de l'événement</th>
+                            <th class="py-3 px-4 text-left">Heure de début</th>
+                            <th class="py-3 px-4 text-left">Heure de fin</th>
+                            <th class="py-3 px-4 text-left">Description</th>
+                            <th class="py-3 px-4 text-left">Lieu</th>
+                            <th class="py-3 px-4 text-left">En ligne</th>
+                            <th class="py-3 px-4 text-left">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for agenda in agendas %}
+                            <tr class="border-b hover:bg-gray-100">
+                                <td class="py-2 px-4">{{ agenda.title }}</td>
+                                <td class="py-2 px-4">{{ agenda.eventDate ? agenda.eventDate|date('Y-m-d') : '' }}</td>
+                                <td class="py-2 px-4">{{ agenda.startTime ? agenda.startTime|date('H:i') : '' }}</td>
+                                <td class="py-2 px-4">{{ agenda.endTime ? agenda.endTime|date('H:i') : '' }}</td>
+                                <td class="py-2 px-4">{{ agenda.description }}</td>
+                                <td class="py-2 px-4">{{ agenda.location }}</td>
+                                <td class="py-2 px-4">
+                                    <span class="{{ agenda.isOnline ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }} text-xs font-semibold px-2.5 py-0.5 rounded">
+                                        {{ agenda.isOnline ? 'Yes' : 'No' }}
+                                    </span>
+                                </td>
+                                <td class="py-2 px-4">
+                                    <a href="{{ path('app_agenda_show', {'id': agenda.id}) }}" class="text-blue-500 hover:underline">Show</a>
+                                    <a href="{{ path('app_agenda_edit', {'id': agenda.id}) }}" class="text-yellow-500 hover:underline ml-2">Edit</a>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="8" class="text-center py-4 text-gray-500">Aucun événement prévu</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    {% else %}
+        {% set months = {
+            '01': 'janvier', '02': 'février', '03': 'mars', '04': 'avril',
+            '05': 'mai', '06': 'juin', '07': 'juillet', '08': 'août',
+            '09': 'septembre', '10': 'octobre', '11': 'novembre', '12': 'décembre'
+        } %}
+        
+        <section class="agenda__listEvent">
+            {% for agenda in agendas %}
+                <article class="agenda__listEvent_sub">
+                    <div class="agenda__listEvent_sub_date">
+                        <p>{{ agenda.eventDate|date('d') }}</p>
+                        <p>{{ months[agenda.eventDate|date('m')] }}</p>
+                    </div>
+                    <div>
+                        <h3>{{ agenda.title }}</h3>
+                        <p>
+                            <span class="{{ agenda.isOnline ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }} text-xs font-semibold px-2.5 py-0.5 rounded">
+                                {{ agenda.isOnline ? 'Yes' : 'No' }}
+                            </span>
+                        </p>
+                        <div>
+                            <p>{{ agenda.startTime ? agenda.startTime|date('H:i') : '' }} - {{ agenda.endTime ? agenda.endTime|date('H:i') : '' }}</p>
+                            <p>{{ agenda.location }}</p>
+                        </div>
+                    </div>
+                </article>
+            {% else %}
+                <h2 class="text-center py-4 text-gray-500">Aucun événement prévu</h2>
+            {% endfor %}
+        </section>
+    {% endif %}
+{% endblock %}

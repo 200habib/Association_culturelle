@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User index
+{% endblock %}
+
+{% block body %}
+	<div class="container mx-auto my-8 general_marginTop">
+		<h1 class="text-4xl font-bold mb-6 text-center">User Index</h1>
+
+		<div class="overflow-x-auto">
+			<table class="min-w-full bg-white shadow-md rounded-lg">
+				<thead class="bg-gray-800 text-white">
+					<tr>
+						<th class="py-3 text-black px-4 text-left">Id</th>
+						<th class="py-3 text-black px-4 text-left">Email</th>
+						<th class="py-3 text-black px-4 text-left">Roles</th>
+						<th class="py-3 text-black px-4 text-left">Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for user in users %}
+						<tr class="border-b hover:bg-gray-100">
+							<td class="py-2 px-4">{{ user.id }}</td>
+							<td class="py-2 px-4">{{ user.email }}</td>
+							<td class="py-2 px-4">
+								{% if user.roles[0] == 'ROLE_USER' %}
+									Utilisateur normal
+								{% elseif user.roles[0] == 'ROLE_SECRETARY' %}
+									Secrétaire
+								{% else %}
+									{{ user.roles ? user.roles|json_encode : '' }}
+								{% endif %}
+							</td>
+							<td class="py-2 px-4">
+								<a href="{{ path('app_user_show', {'id': user.id}) }}" class="text-blue-500 hover:underline">Show</a>
+								<a href="{{ path('app_user_edit', {'id': user.id}) }}" class="text-yellow-500 hover:underline ml-2">Edit</a>
+							</td>
+						</tr>
+					{% else %}
+						<tr>
+							<td colspan="5" class="text-center py-4 text-gray-500">No records found</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+
+		<div class="mt-6">
+			<a href="{{ path('app_user_new') }}" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg">
+				Create New User
+			</a>
+		</div>
+	</div>
+{% endblock %}
