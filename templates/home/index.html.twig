@@ -3,12 +3,12 @@
 {% block title %}Acceuil
 {% endblock %}
 
-		{% block javascripts %}
-			{% block importmap %}
-				{{ importmap('app') }}
-			{% endblock %}
-		{% endblock %}
-		
+{% block javascripts %}
+	{% block importmap %}
+		{{ importmap('app') }}
+	{% endblock %}
+{% endblock %}
+
 {% block body %}
 
 
@@ -22,7 +22,7 @@
 				<div class="text-center max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl">
 					<h1 class="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl font-bold text-white">
 						Communauté Charismatique
-																Montagne des Miracles
+																												Montagne des Miracles
 					</h1>
 					<p class="mt-2 text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-white">
 						Amour - Sainteté - Puissance - Équilibre
@@ -42,17 +42,76 @@
 			</p>
 		</section>
 
+		<div style="display: flex;
+  justify-content: center; align-items: center; height: 415px; position: relative; background-image: url('{{ asset('img/homme/agenda/Rectangle.png') }}'); background-size: 100% auto; background-position: center;">
 
-		<div class="py-12 items-center">
+			{% if events is empty %}
+				<p>Aucun événement trouvé.</p>
+			{% else %}
+				<div class="container" style="position: relative; z-index: 1; padding: 20px;">
+					<div class="announcements">
+
+						<div class="controls flex justify-between mt-4">
+							<button id="prev" class="text-black">
+								<img src="{{ asset('img/homme/agenda/prev.png') }}" alt="kkk"/>
+							</button>
+
+											{% set months = {
+    1: 'Janvier',
+    2: 'Février',
+    3: 'Mars',
+    4: 'Avril',
+    5: 'Mai',
+    6: 'Juin',
+    7: 'Juillet',
+    8: 'Août',
+    9: 'Septembre',
+    10: 'Octobre',
+    11: 'Novembre',
+    12: 'Décembre'
+} %}
+
+							{% for event in events %}
 
 
-			<div class="flex-1">
-				<img src="{{ asset('img/homme/Capture.png') }}" alt="Service Image" class="w-full h-auto">
 
-			</div>
+							
+								<div class="announcement flex" style="background-color: rgba(217, 217, 217, 0.8); border-radius: 10px; padding: 15px; margin-bottom: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+									<div class="flex" style="display: flex; justify-content: space-between; align-items: center;">
 
 
+										<div style="flex-shrink: 0;">
+											<strong>{{ event.eventDate|date('d') }}</strong><br>
+
+
+											<strong>{{ months[event.eventDate|date('n')] }}</strong>
+
+
+										</div>
+
+										<div style="flex-grow: 1; margin-left: 15px;">
+											<strong>{{ event.title }}</strong><br>
+											<span style="color: #666;">{{ event.startTime|date('H:i') }}
+												-
+												{{ event.endTime|date('H:i') }}</span><br>
+											<span style="color: #333;">{{ event.location }}</span><br>
+										</div>
+									</div>
+								</div>
+
+							{% endfor %}
+
+							<button id="next" class="text-black">
+								<img src="{{ asset('img/homme/agenda/Next.png') }}" alt="kkk"/>
+							</button>
+						</div>
+					</div>
+				</div>
+			{% endif %}
 		</div>
+
+
+
 
 
 		<section class="py-8 bg-white text-center">
@@ -161,4 +220,3 @@
 
 
 	{% endblock %}
-

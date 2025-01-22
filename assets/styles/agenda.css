@@ -1,0 +1,21 @@
+.announcement {
+    opacity: 0.8;
+}
+
+.announcement.left {
+    margin-bottom: 102px !important;
+    transform: scale(0.9); 
+    opacity: 0.7; 
+}
+
+.announcement.center {
+    margin-top: 85px !important;
+    transform: scale(1.1); 
+    opacity: 1; 
+}
+
+.announcement.right {
+    margin-bottom: 102px !important;
+    transform: scale(0.9);
+    opacity: 0.7; 
+}
